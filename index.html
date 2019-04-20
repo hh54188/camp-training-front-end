@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .db {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-60px, -60px);
+      }
+      .light {
+        position: absolute;
+        height: 5px;
+        width: 5px;
+        background: black;
+        border-radius: 50%;
+      }
+      .shadow {
+        width: 100px;
+        height: 10px;
+        position: absolute;
+        top: 75px;
+        left: 0px;
+        background: black;
+        /* border-radius: 10% 10% 100% 100%; */
+        box-shadow: 0 5px 50px rgba(0, 0, 0, 0.8);
+        z-index: -1;
+      }
+      /* http://tobiasahlin.com/spinkit/ */
+      .spinner {
+        position: absolute;
+        top: -49px;
+        left: -46px;
+
+        width: 200px;
+        height: 200px;
+        background-color: #333;
+
+        border-radius: 100%;
+        -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+        animation: sk-scaleout 1s infinite ease-in-out;
+      }
+
+      @-webkit-keyframes sk-scaleout {
+        0% {
+          -webkit-transform: scale(0);
+        }
+        100% {
+          -webkit-transform: scale(1);
+          opacity: 0;
+        }
+      }
+
+      @keyframes sk-scaleout {
+        0% {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="db">
+      <div class="spinner"></div>
+      <div
+        style="
+        position:relative;
+        z-index: 10;
+        width: 100px;
+        height: 35px;
+        border: 1px solid black;
+        border-radius: 50%;
+        background: white;
+        "
+      ></div>
+      <div
+        style="
+        position:relative;
+        z-index: 9;
+        width: 100px;
+        height: 40px;
+        bottom: 20px;
+        border: 1px solid black;
+        border-radius: 0 0 50% 50%;
+        background: white;
+      "
+      >
+        <div
+          style="
+            top: 17px;
+            left: 88px;
+        "
+          class="light"
+        ></div>
+      </div>
+      <div
+        class="second-layer"
+        style="
+        position:relative;
+        z-index: 8;
+        width: 100px;
+        height: 35px;
+        bottom: 37px;
+        border: 1px solid black;
+        border-radius: 10% 10% 50% 50%;
+        background: white;
+      "
+      >
+        <div
+          style="
+          top: 15px;
+          left: 88px;
+          "
+          class="light"
+        ></div>
+      </div>
+      <div
+        class="third-layer"
+        style="
+        position:relative;
+        z-index: 7;
+        width: 100px;
+        height: 35px;
+        bottom: 53px;
+        border: 1px solid black;
+        border-radius: 10% 10% 50% 50%;
+        background: white;
+      "
+      >
+        <div
+          style="
+      top: 15px;
+      left: 88px;
+      "
+          class="light"
+        ></div>
+      </div>
+      <div class="shadow"></div>
+    </div>
+  </body>
+</html>
