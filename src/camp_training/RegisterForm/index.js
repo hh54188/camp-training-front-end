@@ -76,7 +76,7 @@ export default class RegisterForm extends React.Component {
             {getFieldDecorator('userName', {
                 rules: [{ 
                     required: true, 
-                    message: '必填，英文，数字，中文, 1到6位',
+                    message: '必填，英文，数字，中文, 6位长度',
                     pattern: /^[\da-zA-Z\u4e00-\u9fa5]{1,6}$/
                 }],
             })(
@@ -87,8 +87,8 @@ export default class RegisterForm extends React.Component {
             {getFieldDecorator('userPassword', {
                 rules: [{ 
                     required: true, 
-                    message: '仅限英文',
-                    pattern: /^[a-zA-Z]*$/
+                    message: '仅限英文、数字，6位长度',
+                    pattern: /^[\da-zA-Z]{1,6}$/
                 }],
             })(
                 <Input type="password"></Input>
