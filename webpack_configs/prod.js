@@ -41,7 +41,7 @@ module.exports = _.flattenDeep(
           }),
           new HtmlWebpackPlugin({
             inject: true,
-            template: appName === 'admin' ? paths.ADMIN_TEMPLATE_HTML : paths.APP_TEMPLATE_HTML,
+            template: paths.TRAINING_TEMPLATE_HTML,
             filename: `dist/${appName}/index_${language}.html`,
             minify: {
               removeComments: true,

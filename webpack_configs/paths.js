@@ -8,7 +8,6 @@ const TRAINING_TEMPLATE_HTML = path.join(__dirname, './templates/training_templa
 
 module.exports = {
   TRAINING_DASHBOARD_ENTRY,
-
   TRAINING_TEMPLATE_HTML,
 
   PUBLIC_DIR,
