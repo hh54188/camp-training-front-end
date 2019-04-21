@@ -6,6 +6,9 @@ import style from './index.less'
 
 const {Item: FormItem} = Form
 
+const REGISTER_API = 'http://vincent.mynatapp.cc/nho-demo/user/t-user'
+const CHECK_API = 'http://vincent.mynatapp.cc/nho-demo/status'
+
 @Form.create()
 export default class RegisterForm extends React.Component {
     constructor(props) {
@@ -16,18 +19,34 @@ export default class RegisterForm extends React.Component {
     }
     onSubmit = (e) => {
         e.preventDefault();
+        
         this.props.form.validateFields((err, values) => {
             if (err) {
-              console.log(err);
               return;
             }
-            const {userName, userPassword} = values
+            const {userName: username, userPassword: password, userConfirmPassword: confirm} = values
             this.setState({
                 loading: true
             })
-            axios.post('/api/register', {
-                userName,
-                userPassword
+
+            fetch(REGISTER_API, {
+                method: 'POST',
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username,
+                    password,
+                    confirm
+                }),
+
+            })
+
+            axios.post(REGISTER_API, {
+                username,
+                password,
+                confirm
               })
               .then(function (response) {
                 console.log(response);
@@ -39,7 +58,6 @@ export default class RegisterForm extends React.Component {
                     loading: false
                 })
               });
-
           });
     }
     compareToFirstPassword = (rule, value, callback) => {
@@ -58,7 +76,7 @@ export default class RegisterForm extends React.Component {
             {getFieldDecorator('userName', {
                 rules: [{ 
                     required: true, 
-                    message: '必填，英文，数字，中文',
+                    message: '必填，英文，数字，中文, 1到6位',
                     pattern: /^[\da-zA-Z\u4e00-\u9fa5]{1,6}$/
                 }],
             })(
